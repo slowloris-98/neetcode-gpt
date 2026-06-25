@@ -13,10 +13,11 @@ class Solution:
         #pass
 
         # number of layers
-        prev = x
+        z = x
         for i in range(len(weights)):
-            z_i = prev @ weights[i] + biases[i]
-            prev = np.maximum(0,z_i)
-        return np.round(prev,5)
+            z = z @ weights[i] + biases[i]
+            if i<len(weights)-1:
+                z = np.maximum(0,z)
+        return np.round(z,5)
 
 
